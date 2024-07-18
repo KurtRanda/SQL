@@ -1,0 +1,36 @@
+*(Regions to Users = One-to-Many, One region can be preferred by many users)
+*(Regions to Posts = One-to-Many, One region can have many posts)
+
+Regions
+--------
+region_id (PK)
+region_name
+
+*(Users to Posts = One-to-Many, One user can create many posts)
+
+Users
+---------
+user_id (PK)
+username
+email
+preferred_region_id (FK to Regions)
+
+Posts
+-------
+post_id (PK)
+title
+text
+user_id (FK to Users)
+location
+region_id (FK to Regions)
+category_id (FK to Categories)
+post_date
+
+*(Categories to Posts = One-to-Many, One category can have many posts)
+
+Categories
+------------
+category_id (PK)
+category_name
+
+**This schema allows us to capture the essential elements and relationships for a Craigslist-like platform, including regions, users, posts, and categories

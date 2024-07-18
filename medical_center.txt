@@ -1,0 +1,45 @@
+(Doctor to Visits = One-to-Many, One doctor can have many patients)
+
+Doctors
+--------
+doctor_id (PK)
+first_name
+last_name
+specialization
+phone
+email
+
+(Patients to Visits = One-to-Many, Patients can have many visits)
+Patients
+---------
+patient_id (PK)
+first_name
+last_name
+date_of_birth
+phone
+email
+address
+
+(Visits to Diseases = Many-to-Many, One visit can be associated with many diseases, and one disease can be diagnosed in many visits.)
+Visits
+-------
+visit_id (PK)
+patient_id (FK to Patients)
+doctor_id (FK to Doctors)
+visit_date
+notes
+
+Diseases
+---------
+disease_id (PK)
+name
+description
+
+Visit_Diseases
+---------------
+visit_disease_id (PK)
+visit_id (FK to Visits)
+disease_id (FK to Diseases)
+
+
+This schema allows us to capture the relationships and interactions in a medical center where doctors see multiple patients, patients see multiple doctors, and during a visit, multiple diseases can be diagnosed.

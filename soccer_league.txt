@@ -1,0 +1,68 @@
+*(Teams to Players = One-to-Many, one team has many players)
+
+*(Teams to Matches(home/away) = One-to-Many, one team has many matches that are home or away)
+
+*(Teams to Standings = One-to-Many, One team has many standings for different seasons)
+
+Teams
+--------
+team_id (PK)
+team_name
+home_city
+
+*(Players to Goals = One-to-many, One player can score many goals)
+
+Players
+---------
+player_id (PK)
+first_name
+last_name
+team_id (FK to Teams)
+position
+
+Referees
+---------
+referee_id (PK)
+first_name
+last_name
+
+*(Matches to Goals = One-to-Many, One match can have many goals)
+
+*(Matches to Referees = One-to-Many, One match has one referee, but one referee can officiate many matches)
+
+*(Matches to Seasons = One-to-Many One match belongs to one season, but one season has many matches)
+
+Matches
+--------
+match_id (PK)
+home_team_id (FK to Teams)
+away_team_id (FK to Teams)
+date
+season_id (FK to Seasons)
+referee_id (FK to Referees)
+
+Goals
+-------
+goal_id (PK)
+player_id (FK to Players)
+match_id (FK to Matches)
+minute_scored
+
+*(Seasons to Standings = One-to-Many, One season has many standings for different teams)
+Seasons
+--------
+season_id (PK)
+start_date
+end_date
+
+Standings
+----------
+standing_id (PK)
+team_id (FK to Teams)
+season_id (FK to Seasons)
+points
+wins
+losses
+draws
+
+**This schema captures the essential elements and relationships for a simple sports league, including teams, players, referees, matches, goals, seasons, and standings.
